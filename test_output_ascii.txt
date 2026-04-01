@@ -1,0 +1,24 @@
+Logging in as Admin...
+Admin session acquired.
+Executing Official Draw...
+node : API Response was:
+At line:1 char:1
++ node test_draw_execute.js > 
+test_output.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
+    + CategoryInfo          : Not 
+   Specified: (API Response was:  
+  :String) [], RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+{
+  error: {
+    status: 500,
+    message: "Failed to insert 
+draw record: Could not find the 
+'total_participants' column of 
+'draws' in the schema cache"
+  }
+}

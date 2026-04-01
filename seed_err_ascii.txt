@@ -1,0 +1,23 @@
+[dotenv@17.3.1] injecting env (9) from .env.local -- tip: ?????? secrets for agents: https://dotenvx.com/as2
+Fetching a user...
+Creating a dummy draw...
+node : Failed to create draw: {
+At line:1 char:1
++ node seed_winner.js > 
+seed_err.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo          : Not 
+   Specified: (Failed to create   
+  draw: {:String) [], RemoteExc   
+ eption
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 
+'participant_count' column of 
+'draws' in the schema cache"
+}

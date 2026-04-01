@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "PGRST204",
+    "details": null,
+    "hint": null,
+    "message": "Could not find the 'fake_column_to_force_error' column of 'prizes' in the schema cache"
+  },
+  "data": null,
+  "count": null,
+  "status": 400,
+  "statusText": "Bad Request"
+}
