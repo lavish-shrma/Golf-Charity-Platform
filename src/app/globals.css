@@ -2,59 +2,1104 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 89.8%;
-    --input: 240 5.9% 89.8%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-  }
+/* =============================================
+   WINDOWS 2000 / MICROSOFT THEME
+   ============================================= */
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap');
+
+:root {
+  /* Win2K System Colors */
+  --win-bg: #d4d0c8;
+  --win-bg-dark: #bdb9b0;
+  --win-bg-light: #ece9d8;
+  --win-text: #000000;
+  --win-text-muted: #444444;
+  --win-text-disabled: #808080;
+
+  /* Window chrome */
+  --win-titlebar-start: #0a246a;
+  --win-titlebar-end: #a6caf0;
+  --win-titlebar-text: #ffffff;
+
+  /* Bevel borders */
+  --win-border-light: #ffffff;
+  --win-border-shadow: #808080;
+  --win-border-dark: #404040;
+
+  /* Accent - green for golf */
+  --win-accent: #2a6c2a;
+  --win-accent-hover: #1e5c1e;
+  --win-accent-text: #ffffff;
+
+  /* Button primary (MSN/Windows blue) */
+  --win-btn-primary-bg: #316ac5;
+  --win-btn-primary-text: #ffffff;
+
+  /* Legacy tokens */
+  --background: 0 0% 83%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 83%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 83%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 214 67% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 45 30% 89%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 45 15% 82%;
+  --muted-foreground: 0 0% 27%;
+  --accent: 45 30% 89%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 50%;
+  --input: 0 0% 50%;
+  --ring: 214 67% 47%;
+  --radius: 0rem;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--win-bg);
+    color: var(--win-text);
+    font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
   }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 16px; }
+  ::-webkit-scrollbar-track { background: var(--win-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--win-bg-dark);
+    border-top: 1px solid var(--win-border-light);
+    border-left: 1px solid var(--win-border-light);
+    border-right: 1px solid var(--win-border-dark);
+    border-bottom: 1px solid var(--win-border-dark);
+  }
+}
+
+/* ---- Raised / Sunken bevel helpers ---- */
+.win2k-raised {
+  border-top: 2px solid var(--win-border-light);
+  border-left: 2px solid var(--win-border-light);
+  border-right: 2px solid var(--win-border-dark);
+  border-bottom: 2px solid var(--win-border-dark);
+}
+
+.win2k-sunken {
+  border-top: 2px solid var(--win-border-shadow);
+  border-left: 2px solid var(--win-border-shadow);
+  border-right: 2px solid var(--win-border-light);
+  border-bottom: 2px solid var(--win-border-light);
+}
+
+/* ---- Window ---- */
+.win2k-window {
+  background: var(--win-bg);
+  border-top: 2px solid var(--win-border-light);
+  border-left: 2px solid var(--win-border-light);
+  border-right: 2px solid var(--win-border-dark);
+  border-bottom: 2px solid var(--win-border-dark);
+  margin-bottom: 8px;
+}
+
+.win2k-titlebar {
+  background: linear-gradient(90deg, var(--win-titlebar-start) 0%, var(--win-titlebar-end) 100%);
+  padding: 3px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.win2k-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--win-titlebar-text);
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+.win2k-titlebar-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.win2k-titlebar-text {
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.win2k-titlebar-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.win2k-btn-chrome {
+  width: 18px;
+  height: 16px;
+  background: var(--win-bg);
+  border-top: 1px solid var(--win-border-light);
+  border-left: 1px solid var(--win-border-light);
+  border-right: 1px solid var(--win-border-dark);
+  border-bottom: 1px solid var(--win-border-dark);
+  font-size: 9px;
+  font-family: 'Tahoma', Arial, sans-serif;
+  cursor: pointer;
+  color: var(--win-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.win2k-btn-chrome:hover {
+  background: #e8e8e8;
+}
+
+.win2k-btn-chrome.win2k-btn-close {
+  background: #c8354a;
+  color: white;
+  font-size: 8px;
+}
+
+.win2k-btn-chrome.win2k-btn-close:hover {
+  background: #e04050;
+}
+
+.win2k-window-body {
+  padding: 8px;
+  background: var(--win-bg);
+}
+
+/* ---- Buttons ---- */
+.win2k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 3px 12px;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  min-height: 23px;
+}
+
+.win2k-btn-default {
+  background: var(--win-bg);
+  color: var(--win-text);
+  border-top: 2px solid var(--win-border-light);
+  border-left: 2px solid var(--win-border-light);
+  border-right: 2px solid var(--win-border-dark);
+  border-bottom: 2px solid var(--win-border-dark);
+}
+
+.win2k-btn-default:hover {
+  background: var(--win-bg-light);
+}
+
+.win2k-btn-default:active {
+  border-top: 2px solid var(--win-border-dark);
+  border-left: 2px solid var(--win-border-dark);
+  border-right: 2px solid var(--win-border-light);
+  border-bottom: 2px solid var(--win-border-light);
+}
+
+.win2k-btn-primary {
+  background: var(--win-btn-primary-bg);
+  color: var(--win-btn-primary-text);
+  border-top: 2px solid #6699dd;
+  border-left: 2px solid #6699dd;
+  border-right: 2px solid #1a3a88;
+  border-bottom: 2px solid #1a3a88;
+  font-weight: bold;
+}
+
+.win2k-btn-primary:hover {
+  background: #4a80d4;
+}
+
+.win2k-btn-primary:active {
+  border-top: 2px solid #1a3a88;
+  border-left: 2px solid #1a3a88;
+  border-right: 2px solid #6699dd;
+  border-bottom: 2px solid #6699dd;
+}
+
+.win2k-full-width {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* ---- Links ---- */
+.win2k-link {
+  color: #0000cc;
+  text-decoration: underline;
+  font-size: 11px;
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+.win2k-link:hover {
+  color: #cc0000;
+}
+
+/* ---- Navbar ---- */
+.win2k-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--win-bg);
+}
+
+.win2k-sysbar {
+  background: linear-gradient(90deg, var(--win-titlebar-start) 0%, var(--win-titlebar-end) 100%);
+  padding: 1px 8px;
+}
+
+.win2k-sysbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.win2k-sysbar-logo {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Tahoma', Arial, sans-serif;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.win2k-sysbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #cce0ff;
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+.win2k-sysbar-sep {
+  color: #6699cc;
+  margin: 0 2px;
+}
+
+.win2k-menubar {
+  background: var(--win-bg);
+  border-bottom: 2px solid var(--win-border-shadow);
+  border-top: 2px solid var(--win-border-light);
+}
+
+.win2k-menubar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.win2k-menubar-left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.win2k-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  padding: 2px 8px;
+}
+
+.win2k-nav-logo-icon {
+  font-size: 18px;
+}
+
+.win2k-nav-logo-text {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0a246a;
+}
+
+.win2k-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--win-border-shadow);
+  margin: 0 6px;
+}
+
+.win2k-nav-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--win-text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.win2k-nav-item:hover {
+  background: var(--win-btn-primary-bg);
+  color: white;
+}
+
+.win2k-nav-btn {
+  font-size: 11px;
+  padding: 2px 10px;
+  min-height: 21px;
+}
+
+.win2k-toolbar {
+  background: var(--win-bg-light);
+  border-bottom: 1px solid var(--win-border-shadow);
+  padding: 2px 0;
+}
+
+.win2k-toolbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.win2k-toolbar-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 2px 6px;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--win-text);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 22px;
+}
+
+.win2k-toolbar-btn:hover {
+  background: var(--win-bg);
+  border-color: var(--win-border-shadow);
+}
+
+.win2k-toolbar-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--win-border-shadow);
+  margin: 0 4px;
+}
+
+/* Mobile nav */
+.win2k-mobile-menu {
+  background: var(--win-bg);
+  border-top: 1px solid var(--win-border-shadow);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.win2k-mobile-link {
+  display: block;
+  padding: 4px 8px;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--win-text);
+  text-decoration: none;
+}
+
+.win2k-mobile-link:hover {
+  background: var(--win-btn-primary-bg);
+  color: white;
+}
+
+.win2k-mobile-divider {
+  height: 1px;
+  background: var(--win-border-shadow);
+  margin: 4px 0;
+}
+
+.win2k-mobile-cta {
+  margin-top: 4px;
+  width: 100%;
+}
+
+/* ---- Desktop / Page ---- */
+.win2k-desktop {
+  min-height: 100vh;
+  background-color: #008080;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.03) 1px,
+      rgba(0,0,0,0.03) 2px
+    );
+  position: relative;
+}
+
+.win2k-wallpaper-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(0,0,0,0.08) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.win2k-desktop-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 12px 8px 0;
+}
+
+/* ---- Address Bar ---- */
+.win2k-addressbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 4px;
+  background: var(--win-bg);
+  border-bottom: 1px solid var(--win-border-shadow);
+  margin-bottom: 4px;
+}
+
+.win2k-addressbar-label {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--win-text);
+  white-space: nowrap;
+}
+
+.win2k-addressbar-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border-top: 1px solid var(--win-border-shadow);
+  border-left: 1px solid var(--win-border-shadow);
+  border-right: 1px solid var(--win-border-light);
+  border-bottom: 1px solid var(--win-border-light);
+  padding: 1px 4px;
+  min-height: 20px;
+}
+
+.win2k-addressbar-icon {
+  font-size: 12px;
+}
+
+.win2k-url-text {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: #0000cc;
+}
+
+.win2k-go-btn {
+  font-size: 10px;
+  padding: 1px 8px;
+  min-height: 20px;
+}
+
+/* ---- Marquee / Ticker ---- */
+.win2k-marquee-wrapper {
+  background: #000080;
+  color: #ffff00;
+  padding: 2px 0;
+  overflow: hidden;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.win2k-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: win2k-scroll 30s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes win2k-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* ---- Hero ---- */
+.win2k-hero-window {
+  margin-bottom: 8px;
+}
+
+.win2k-hero-content {
+  padding: 0;
+}
+
+.win2k-hero-body {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+}
+
+.win2k-hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.win2k-hero-right {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .win2k-hero-body { flex-direction: column; }
+  .win2k-hero-right { width: 100%; }
+}
+
+.win2k-logo-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: var(--win-bg-light);
+  border-top: 1px solid var(--win-border-light);
+  border-left: 1px solid var(--win-border-light);
+  border-right: 1px solid var(--win-border-shadow);
+  border-bottom: 1px solid var(--win-border-shadow);
+  margin-bottom: 12px;
+}
+
+.win2k-logo-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.win2k-logo-title {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0a246a;
+}
+
+.win2k-logo-subtitle {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-muted);
+}
+
+.win2k-hero-headline {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: var(--win-text);
+}
+
+.win2k-headline-main {
+  color: #0a246a;
+}
+
+.win2k-headline-accent {
+  color: #2a6c2a;
+}
+
+.win2k-hero-desc {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--win-text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.win2k-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.win2k-disclaimer {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-disabled);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+/* Sidebar boxes */
+.win2k-sidebar-box {
+  background: var(--win-bg-light);
+  border-top: 1px solid var(--win-border-light);
+  border-left: 1px solid var(--win-border-light);
+  border-right: 1px solid var(--win-border-shadow);
+  border-bottom: 1px solid var(--win-border-shadow);
+}
+
+.win2k-sidebar-header {
+  background: linear-gradient(90deg, #0a246a 0%, #4a6aaa 100%);
+  color: white;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+}
+
+.win2k-sidebar-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.win2k-sidebar-list li {
+  padding: 2px 6px;
+  border-bottom: 1px dotted var(--win-border-shadow);
+}
+
+.win2k-sidebar-list li:last-child {
+  border-bottom: none;
+}
+
+.win2k-sidebar-ad {
+  background: #ffffd0;
+}
+
+.win2k-sidebar-text {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-muted);
+  padding: 4px 6px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---- Stats ---- */
+.win2k-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 480px) {
+  .win2k-stats-row { grid-template-columns: 1fr; }
+}
+
+.win2k-stat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.win2k-stat-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.win2k-stat-value {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #2a6c2a;
+  line-height: 1.2;
+}
+
+.win2k-stat-label {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-disabled);
+  margin-top: 2px;
+}
+
+/* ---- Charity Section ---- */
+.win2k-charity-content {
+  text-align: center;
+  padding: 16px;
+}
+
+.win2k-charity-badge {
+  display: inline-block;
+  background: #000080;
+  color: #ffff00;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 10px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.win2k-charity-name {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0a246a;
+  margin: 0 0 8px;
+}
+
+.win2k-charity-desc {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--win-text-muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 10px;
+}
+
+.win2k-charity-link {
+  font-size: 11px;
+}
+
+/* ---- How It Works ---- */
+.win2k-howitworks-inner {
+  padding: 4px;
+}
+
+.win2k-section-heading {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #0a246a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--win-border-shadow);
+}
+
+.win2k-section-icon {
+  font-size: 16px;
+}
+
+.win2k-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .win2k-steps-grid { grid-template-columns: 1fr; }
+}
+
+.win2k-step-card {
+  background: var(--win-bg-light);
+  border-top: 1px solid var(--win-border-light);
+  border-left: 1px solid var(--win-border-light);
+  border-right: 1px solid var(--win-border-shadow);
+  border-bottom: 1px solid var(--win-border-shadow);
+}
+
+.win2k-step-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, #0a246a 0%, #4a6aaa 100%);
+  padding: 3px 6px;
+}
+
+.win2k-step-icon {
+  font-size: 14px;
+}
+
+.win2k-step-number {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+}
+
+.win2k-inset-panel {
+  padding: 8px;
+  background: white;
+  margin: 4px;
+  border-top: 1px solid var(--win-border-shadow);
+  border-left: 1px solid var(--win-border-shadow);
+  border-right: 1px solid var(--win-border-light);
+  border-bottom: 1px solid var(--win-border-light);
+}
+
+.win2k-step-title {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #0a246a;
+  margin: 0 0 4px;
+}
+
+.win2k-step-desc {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---- CTA ---- */
+.win2k-cta-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.win2k-cta-icon-row {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.win2k-cta-heading {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0a246a;
+  margin: 0 0 8px;
+}
+
+.win2k-cta-desc {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  color: var(--win-text-muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.win2k-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---- Status bar ---- */
+.win2k-page-statusbar {
+  background: var(--win-bg);
+  border-top: 1px solid var(--win-border-shadow);
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-muted);
+  margin-top: 8px;
+}
+
+.win2k-statusbar-sep {
+  margin: 0 8px;
+  color: var(--win-border-shadow);
+}
+
+/* ---- Footer ---- */
+.win2k-footer {
+  margin-top: 8px;
+  background: var(--win-bg);
+}
+
+.win2k-footer-window {
+  max-width: 1024px;
+  margin: 0 auto 0;
+  border-top: 2px solid var(--win-border-light);
+  border-left: 2px solid var(--win-border-light);
+  border-right: 2px solid var(--win-border-dark);
+  border-bottom: 2px solid var(--win-border-dark);
+}
+
+.win2k-footer-body {
+  padding: 12px;
+}
+
+.win2k-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .win2k-footer-grid { grid-template-columns: 1fr; }
+}
+
+.win2k-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.win2k-footer-logo-text {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0a246a;
+}
+
+.win2k-footer-desc {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text-muted);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.win2k-footer-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.win2k-badge {
+  background: var(--win-bg-dark);
+  border-top: 1px solid var(--win-border-light);
+  border-left: 1px solid var(--win-border-light);
+  border-right: 1px solid var(--win-border-shadow);
+  border-bottom: 1px solid var(--win-border-shadow);
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 9px;
+  padding: 1px 5px;
+  color: var(--win-text-muted);
+}
+
+.win2k-footer-section-title {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #0a246a;
+  margin-bottom: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--win-border-shadow);
+}
+
+.win2k-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.win2k-footer-links li {
+  margin-bottom: 3px;
+}
+
+/* ---- Taskbar ---- */
+.win2k-taskbar {
+  background: linear-gradient(180deg, #e8e4dc 0%, var(--win-bg) 100%);
+  border-top: 2px solid var(--win-border-light);
+  padding: 2px 4px;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+.win2k-taskbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.win2k-start-btn {
+  background: linear-gradient(180deg, #6aaf6a 0%, #2a6c2a 100%);
+  color: white;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-top: 2px solid #8aca8a;
+  border-left: 2px solid #8aca8a;
+  border-right: 2px solid #1a4c1a;
+  border-bottom: 2px solid #1a4c1a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 26px;
+}
+
+.win2k-start-btn:hover {
+  background: linear-gradient(180deg, #7abf7a 0%, #3a7c3a 100%);
+}
+
+.win2k-start-icon {
+  font-size: 14px;
+}
+
+.win2k-taskbar-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--win-border-shadow);
+  margin: 0 2px;
+}
+
+.win2k-taskbar-items {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+}
+
+.win2k-taskbar-item {
+  background: var(--win-bg-dark);
+  border-top: 1px solid var(--win-border-shadow);
+  border-left: 1px solid var(--win-border-shadow);
+  border-right: 1px solid var(--win-border-light);
+  border-bottom: 1px solid var(--win-border-light);
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  padding: 2px 8px;
+  color: var(--win-text);
+  cursor: pointer;
+}
+
+.win2k-taskbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--win-bg-dark);
+  border-top: 1px solid var(--win-border-shadow);
+  border-left: 1px solid var(--win-border-shadow);
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.win2k-tray-item {
+  font-size: 12px;
+}
+
+.win2k-tray-clock {
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 10px;
+  color: var(--win-text);
+  padding-left: 4px;
+  border-left: 1px solid var(--win-border-shadow);
 }

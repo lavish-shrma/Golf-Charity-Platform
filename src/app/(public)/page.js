@@ -13,107 +13,218 @@ async function getFeaturedCharity() {
   }
 }
 
+function Win2kWindow({ title, icon, children, className = '' }) {
+  return (
+    <div className={`win2k-window ${className}`}>
+      <div className="win2k-titlebar">
+        <div className="win2k-titlebar-left">
+          {icon && <span className="win2k-titlebar-icon">{icon}</span>}
+          <span className="win2k-titlebar-text">{title}</span>
+        </div>
+        <div className="win2k-titlebar-buttons">
+          <button className="win2k-btn-chrome" aria-label="Minimize">_</button>
+          <button className="win2k-btn-chrome" aria-label="Maximize">□</button>
+          <button className="win2k-btn-chrome win2k-btn-close" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div className="win2k-window-body">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function Win2kButton({ href, children, primary, className = '' }) {
+  const cls = `win2k-btn ${primary ? 'win2k-btn-primary' : 'win2k-btn-default'} ${className}`
+  return (
+    <Link href={href} className={cls}>
+      {children}
+    </Link>
+  )
+}
+
 export default async function HomePage() {
   const featuredCharity = await getFeaturedCharity()
 
   return (
-    <div className="bg-zinc-950 text-white">
+    <div className="win2k-desktop">
 
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1 text-emerald-400 text-sm font-medium mb-6">
-            Monthly Prize Draws · Charity Impact · Golf Performance
-          </div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Play Golf.{' '}
-            <span className="text-emerald-400">Change Lives.</span>
-          </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Subscribe, enter your scores, win prizes, and support the charity you love. Every round you play makes a difference.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/signup" className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-8 py-4 rounded-lg text-lg transition-colors">
-              Start Your Subscription
-            </Link>
-            <Link href="/how-it-works" className="border border-zinc-700 hover:border-zinc-500 text-white px-8 py-4 rounded-lg text-lg transition-colors">
-              How It Works
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Desktop wallpaper tiling pattern */}
+      <div className="win2k-wallpaper-overlay" />
 
-      {/* Stats Bar */}
-      <section className="border-y border-zinc-800 bg-zinc-900/50 py-12">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="text-4xl font-bold text-emerald-400 mb-2">£12,400+</div>
-            <div className="text-zinc-500 text-sm">Donated to Charities</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-emerald-400 mb-2">340+</div>
-            <div className="text-zinc-500 text-sm">Active Members</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-emerald-400 mb-2">£8,200+</div>
-            <div className="text-zinc-500 text-sm">Prizes Awarded</div>
-          </div>
-        </div>
-      </section>
+      <div className="win2k-desktop-content">
 
-      {/* Featured Charity */}
-      {featuredCharity && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <p className="text-emerald-400 text-sm font-medium uppercase tracking-wider mb-2">Featured Charity</p>
-              <h2 className="text-3xl font-bold">This Month We Support</h2>
+        {/* Hero Window */}
+        <Win2kWindow title="Welcome to GolfGives - Microsoft Internet Explorer" icon="🌐" className="win2k-hero-window">
+          {/* IE-style address bar */}
+          <div className="win2k-addressbar">
+            <span className="win2k-addressbar-label">Address</span>
+            <div className="win2k-addressbar-input">
+              <span className="win2k-addressbar-icon">🌐</span>
+              <span className="win2k-url-text">http://www.golfgives.co.uk/</span>
             </div>
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">{featuredCharity.name}</h3>
-              <p className="text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-6">{featuredCharity.description}</p>
-              <Link href="/charities" className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
-                View all charities →
+            <button className="win2k-btn win2k-btn-default win2k-go-btn">Go</button>
+          </div>
+
+          <div className="win2k-hero-content">
+            {/* MSN-style animated star/badge */}
+            <div className="win2k-marquee-wrapper">
+              <div className="win2k-marquee">
+                ★ &nbsp; MONTHLY PRIZE DRAWS &nbsp; · &nbsp; CHARITY IMPACT &nbsp; · &nbsp; GOLF PERFORMANCE &nbsp; ★ &nbsp; NEW: £12,400+ DONATED! &nbsp; ·
+              </div>
+            </div>
+
+            <div className="win2k-hero-body">
+              <div className="win2k-hero-left">
+                <div className="win2k-logo-box">
+                  <div className="win2k-logo-icon">⛳</div>
+                  <div>
+                    <div className="win2k-logo-title">GolfGives</div>
+                    <div className="win2k-logo-subtitle">The Official Golf Charity Platform</div>
+                  </div>
+                </div>
+
+                <div className="win2k-hero-headline">
+                  <span className="win2k-headline-main">Play Golf.</span>
+                  <br />
+                  <span className="win2k-headline-accent">Change Lives.</span>
+                </div>
+
+                <p className="win2k-hero-desc">
+                  Subscribe, enter your scores, win prizes, and support the charity you love.
+                  Every round you play makes a difference.
+                </p>
+
+                <div className="win2k-button-row">
+                  <Win2kButton href="/signup" primary>
+                    ▶ Start Your Subscription
+                  </Win2kButton>
+                  <Win2kButton href="/how-it-works">
+                    ℹ How It Works
+                  </Win2kButton>
+                </div>
+
+                {/* Windows XP-style bliss */}
+                <div className="win2k-disclaimer">
+                  <span className="win2k-lock-icon">🔒</span>
+                  Secure · Trusted by 340+ golfers · Est. 2024
+                </div>
+              </div>
+
+              <div className="win2k-hero-right">
+                {/* Fake sidebar like old MSN */}
+                <div className="win2k-sidebar-box">
+                  <div className="win2k-sidebar-header">📢 Latest News</div>
+                  <ul className="win2k-sidebar-list">
+                    <li><Link href="/prizes" className="win2k-link">💰 Prize pool reaches £8,200!</Link></li>
+                    <li><Link href="/draws" className="win2k-link">🏆 June draw results posted</Link></li>
+                    <li><Link href="/charities" className="win2k-link">❤️ New charity added</Link></li>
+                    <li><Link href="/how-it-works" className="win2k-link">📋 How draws work</Link></li>
+                  </ul>
+                </div>
+
+                <div className="win2k-sidebar-box win2k-sidebar-ad">
+                  <div className="win2k-sidebar-header">🌟 Did You Know?</div>
+                  <p className="win2k-sidebar-text">
+                    Your Stableford scores become your lottery numbers. The better you play, the better your odds!
+                  </p>
+                  <Win2kButton href="/signup" primary className="win2k-full-width">
+                    Join Now — FREE Trial!
+                  </Win2kButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Win2kWindow>
+
+        {/* Stats Row */}
+        <div className="win2k-stats-row">
+          {[
+            { icon: '💷', value: '£12,400+', label: 'Donated to Charities' },
+            { icon: '👤', value: '340+', label: 'Active Members' },
+            { icon: '🏆', value: '£8,200+', label: 'Prizes Awarded' },
+          ].map((stat) => (
+            <Win2kWindow key={stat.label} title={stat.label} className="win2k-stat-window">
+              <div className="win2k-stat-content">
+                <div className="win2k-stat-icon">{stat.icon}</div>
+                <div className="win2k-stat-value">{stat.value}</div>
+                <div className="win2k-stat-label">{stat.label}</div>
+              </div>
+            </Win2kWindow>
+          ))}
+        </div>
+
+        {/* Featured Charity */}
+        {featuredCharity && (
+          <Win2kWindow title="Featured Charity - This Month We Support" icon="❤️" className="win2k-charity-window">
+            <div className="win2k-charity-content">
+              <div className="win2k-charity-badge">⭐ FEATURED THIS MONTH ⭐</div>
+              <h3 className="win2k-charity-name">{featuredCharity.name}</h3>
+              <p className="win2k-charity-desc">{featuredCharity.description}</p>
+              <Link href="/charities" className="win2k-link win2k-charity-link">
+                📋 View all supported charities &gt;&gt;
               </Link>
             </div>
-          </div>
-        </section>
-      )}
+          </Win2kWindow>
+        )}
 
-      {/* How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-900/30">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-zinc-400">Three simple steps to play, give, and win.</p>
+        {/* How It Works */}
+        <Win2kWindow title="How It Works - GolfGives Help" icon="❓" className="win2k-howitworks-window">
+          <div className="win2k-howitworks-inner">
+            <div className="win2k-section-heading">
+              <span className="win2k-section-icon">📖</span>
+              Three Simple Steps to Play, Give, and Win
+            </div>
+            <div className="win2k-steps-grid">
+              {[
+                { step: '01', icon: '💳', title: 'Subscribe', desc: 'Choose a monthly or yearly plan. A portion of every subscription goes directly to your chosen charity.' },
+                { step: '02', icon: '⛳', title: 'Enter Your Scores', desc: 'Log your last 5 Stableford scores after each round. Your scores become your draw numbers.' },
+                { step: '03', icon: '🏆', title: 'Win and Give', desc: 'Monthly draws match your scores against drawn numbers. Win prizes while your charity benefits every month.' }
+              ].map((item) => (
+                <div key={item.step} className="win2k-step-card">
+                  <div className="win2k-step-header">
+                    <div className="win2k-step-icon">{item.icon}</div>
+                    <div className="win2k-step-number">Step {item.step}</div>
+                  </div>
+                  <div className="win2k-inset-panel">
+                    <h3 className="win2k-step-title">{item.title}</h3>
+                    <p className="win2k-step-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { step: '01', title: 'Subscribe', desc: 'Choose a monthly or yearly plan. A portion of every subscription goes directly to your chosen charity.' },
-              { step: '02', title: 'Enter Your Scores', desc: 'Log your last 5 Stableford scores after each round. Your scores become your draw numbers.' },
-              { step: '03', title: 'Win and Give', desc: 'Monthly draws match your scores against drawn numbers. Win prizes while your charity benefits every month.' }
-            ].map((item) => (
-              <div key={item.step} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
-                <div className="text-emerald-400 font-bold text-4xl mb-4">{item.step}</div>
-                <h3 className="text-white font-semibold text-lg mb-3">{item.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+        </Win2kWindow>
+
+        {/* Final CTA Window */}
+        <Win2kWindow title="Ready to Make an Impact?" icon="⭐" className="win2k-cta-window">
+          <div className="win2k-cta-content">
+            <div className="win2k-cta-icon-row">🏌️</div>
+            <h2 className="win2k-cta-heading">Ready to Make an Impact?</h2>
+            <p className="win2k-cta-desc">
+              Join hundreds of golfers supporting UK charities through the sport they love.
+            </p>
+            <div className="win2k-cta-buttons">
+              <Win2kButton href="/signup" primary>
+                ▶ Get Started Today
+              </Win2kButton>
+              <Win2kButton href="/how-it-works">
+                ℹ Learn More
+              </Win2kButton>
+            </div>
           </div>
+        </Win2kWindow>
+
+        {/* Windows-style status bar at bottom of page content */}
+        <div className="win2k-page-statusbar">
+          <span>✅ Done</span>
+          <span className="win2k-statusbar-sep">|</span>
+          <span>🌐 Internet</span>
+          <span className="win2k-statusbar-sep">|</span>
+          <span>🔒 Secure</span>
         </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Ready to Make an Impact?</h2>
-          <p className="text-zinc-400 mb-8">Join hundreds of golfers supporting UK charities through the sport they love.</p>
-          <Link href="/signup" className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-8 py-4 rounded-lg text-lg transition-colors inline-block">
-            Get Started Today
-          </Link>
-        </div>
-      </section>
-
+      </div>
     </div>
   )
 }
